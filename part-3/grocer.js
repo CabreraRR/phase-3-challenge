@@ -2,26 +2,34 @@ const modal = document.getElementById('myCart');
 const btn = document.getElementById('cart-button');
 const span = document.getElementsByClassName('close')[0];
 const clear = document.getElementById('clear');
-const item = document.getElementById('add');
+const add = document.getElementById('add');
+const cart = document.getElementById('cart-item-count');
 
-let test = [];
 
+
+let cartContents =[];
 let cartNum = 0;
-let cartContents = [ ];
-
 
 window.onload = itemCount();
 
+
+
 function itemCount() {
-    document.getElementById('cart-item-count').innerHTML = "(" + cartNum + ")";
+    cart.innerHTML = "(" + cartNum + ")";
+    if (cartNum === 0){
+    	console.log('Your cart is empty :(');
+    } else {
+    	console.log('Your item has been added to your cart');
+    }
 };
 
-function addToCart() {
-    itemCount();
-};
-
-item.onclick = function() {
-	test += item.previousElementSibling.previousElementSibling.innerHTML;
+add.onclick = function() {
+	let item = {};
+	item.name = add.previousElementSibling.previousElementSibling.innerHTML;
+	item.price = add.previousElementSibling.innerHTML;
+	cartContents.push(item);
+	cartNum ++
+	itemCount();
 }
 
 btn.onclick = function() {
