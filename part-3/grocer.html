@@ -1,80 +1,99 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Grocer</title>
-
     <link rel="stylesheet" href="grocer.css">
+</head>
 
-  </head>
-  <body class="flex flex-column">
+<body class="flex flex-column">
     <header class="site-header flex flex-row-between">
-      <h1>Grocer</h1>
-      <button type="button" id="cart-button">
-        Cart
-        <span id="cart-item-count"></span>
-      </button>
+        <h1>Grocer</h1>
+        <button type="button" id="cart-button">
+            Cart
+            <span id="cart-item-count"></span>
+        </button>
     </header>
-
     <div class="flex flex-full">
-      <div class="sidebar">
-        <ul>
-          <h4>Sections</h4>
-          <li><a href="#produce">Produce</a></li>
-          <li><a href="#deli">Deli</a></li>
-          <li><a href="#frozen">Frozen</a></li>
-        </ul>
-      </div>
-      <div class="content">
-        <h1>Groceries</h1>
-        <ul class="item-section" id="produce">
-          <h3>Produce</h3>
-          <li class="item flex flex-row-between">
-            <span class="item-name">Onions</span>
-            <span class="item-price">$1.11</span>
-            <button onclick="addToCart()" type="button">Add to cart</button>
-          </li>
-          <li class="item flex flex-row-between">
-            <span class="item-name">Tomatoes</span>
-            <span class="item-price">$1.56</span>
-            <button onclick="addToCart()" type="button">Add to cart</button>
-          </li>
-          <li class="item flex flex-row-between">
-            <span class="item-name">Carrots</span>
-            <span class="item-price">$2.88</span>
-            <button onclick="addToCart()" type="button">Add to cart</button>
-          </li>
-        </ul>
-
-        <ul id="deli" class="item-section">
-          <h3>Deli</h3>
-          <li class="item flex flex-row-between">
-            <span class="item-name">Cold Cuts</span>
-            <span class="item-price">$1.47</span>
-            <button onclick="addToCart()" type="button">Add to cart</button>
-          </li>
-        </ul>
-
-        <ul id="frozen" class="item-section">
-          <h3>Frozen</h3>
-          <li class="item flex flex-row-between">
-            <span class="item-name">Orange Juice</span>
-            <span class="item-price">$2.52</span>
-            <button onclick="addToCart()" type="button">Add to cart</button>
-          </li>
-          <li class="item flex flex-row-between">
-            <span class="item-name">Ice Cream</span>
-            <span class="item-price">$14.08</span>
-            <button onclick="addToCart()" type="button">Add to cart</button>
-          </li>
-          <li class="item flex flex-row-between">
-            <span class="item-name">Pizza</span>
-            <span class="item-price">$16.61</span>
-            <button onclick="addToCart()" type="button">Add to cart</button>
-          </li>
-        </ul>
-      </div>
+        <div class="sidebar">
+            <ul>
+                <h4>Sections</h4>
+                <li><a href="#produce">Produce</a></li>
+                <li><a href="#deli">Deli</a></li>
+                <li><a href="#frozen">Frozen</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Groceries</h1>
+            <ul class="item-section" id="produce">
+                <h3>Produce</h3>
+                <li class="item flex flex-row-between">
+                    <span class="item-name">Onions</span>
+                    <span class="item-price">$1.11</span>
+                    <button onclick="addToCart()" type="button">Add to cart</button>
+                </li>
+                <li class="item flex flex-row-between">
+                    <span class="item-name">Tomatoes</span>
+                    <span class="item-price">$1.56</span>
+                    <button onclick="addToCart()" type="button">Add to cart</button>
+                </li>
+                <li class="item flex flex-row-between">
+                    <span class="item-name">Carrots</span>
+                    <span class="item-price">$2.88</span>
+                    <button onclick="addToCart()" type="button">Add to cart</button>
+                </li>
+            </ul>
+            <ul id="deli" class="item-section">
+                <h3>Deli</h3>
+                <li class="item flex flex-row-between">
+                    <span class="item-name">Cold Cuts</span>
+                    <span class="item-price">$1.47</span>
+                    <button onclick="addToCart()" type="button">Add to cart</button>
+                </li>
+            </ul>
+            <ul id="frozen" class="item-section">
+                <h3>Frozen</h3>
+                <li class="item flex flex-row-between">
+                    <span class="item-name">Orange Juice</span>
+                    <span class="item-price">$2.52</span>
+                    <button onclick="addToCart()" type="button">Add to cart</button>
+                </li>
+                <li class="item flex flex-row-between">
+                    <span class="item-name">Ice Cream</span>
+                    <span class="item-price">$14.08</span>
+                    <button onclick="addToCart()" type="button">Add to cart</button>
+                </li>
+                <li class="item flex flex-row-between">
+                    <span class="item-name">Pizza</span>
+                    <span class="item-price">$16.61</span>
+                    <button onclick="addToCart()" type="button">Add to cart</button>
+                </li>
+            </ul>
+        </div>
     </div>
-  </body>
-      <script src="grocer.js"></script>
+    <div id="myCart" class="modal">
+        <div class="modal-content">
+            <span class="close">X</span>
+            <h1>CART</h1>
+            <ul>
+                <li class="item flex flex-row-between">
+                    <span class="item-name">Orange Juice</span>
+                    <span class="item-price">$2.52</span>
+                </li>
+                <li class="item flex flex-row-between">
+                    <span class="item-name">Orange Juice</span>
+                    <span class="item-price">$2.52</span>
+                </li>
+                <li class="item flex flex-row-between">
+                    <span class="item-name">Orange Juice</span>
+                    <span class="item-price">$2.52</span>
+                </li>
+            </ul>
+            <button id="clear" type="button">clear</button>
+        </div>
+    </div>
+</body>
+<script src="grocer.js"></script>
+
 </html>
