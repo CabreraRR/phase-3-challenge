@@ -187,7 +187,7 @@ Clicking on the "Cart" button opens the cart modal.
 - [x] __20:__ No third party CSS or JS libraries are used (all code must be written from scratch)
 - [x] __10:__ HTML, CSS, and JS are separated into their own files.
 - [x] __20:__ Clicking on a section in the "Sections" sidebar will jump to that section in the page
-- [ ] __20:__ Clicking on "Add to cart" will update the number displayed next to the "Cart" button to show the total number of items in the user's cart
+- [x] __20:__ Clicking on "Add to cart" will update the number displayed next to the "Cart" button to show the total number of items in the user's cart
 - [ ] __20:__ Clicking on the "Cart" button will show the cart modal with a list of all items added
 - [ ] __20:__ Clicking on the "Clear" button in the cart modal removes all items from the cart
 - [ ] __20:__ Clicking on the "X" button in the cart modal closes the modal
