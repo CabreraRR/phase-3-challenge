@@ -1,5 +1,14 @@
-let cartNum = cart.length;
-let cart = [ ];
+const modal = document.getElementById('myCart');
+const btn = document.getElementById('cart-button');
+const span = document.getElementsByClassName('close')[0];
+const clear = document.getElementById('clear');
+const item = document.getElementById('add');
+
+let test = [];
+
+let cartNum = 0;
+let cartContents = [ ];
+
 
 window.onload = itemCount();
 
@@ -11,15 +20,18 @@ function addToCart() {
     itemCount();
 };
 
-// cart modal
-var modal = document.getElementById('myCart');
-var btn = document.getElementById('cart-button');
-var span = document.getElementsByClassName('close')[0];
+item.onclick = function() {
+	test += item.previousElementSibling.previousElementSibling.innerHTML;
+}
 
 btn.onclick = function() {
     modal.style.display = "block";
-};
+}
 
 span.onclick = function() {
     modal.style.display = "none";
-};
+}
+
+clear.onclick = function() {
+
+}
