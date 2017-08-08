@@ -21,14 +21,15 @@ app.get('/api/days/:day', (req, res) => {
 });
 
 app.post('/api/array/concat', (req, res) => {
-    let arr = [];
-
+let ret = []
     const vals = Object.keys(req.body).map(key => req.body[key]);
-console.log(vals)
-    for (let i = 0; i < vals.length; i++) {
-    	arr.push(vals)
-    }
-    res.status(200).send(arr)
+    let ar = vals[0]
+    ar.forEach(function(item) {
+        ret.push(item.slice(1, -1));
+    })
+    let stuff = ret.join(', ').split(", ")
+    console.log(stuff)
+    res.status(200).send(stuff);
 })
 
 app.listen(3000, () => {

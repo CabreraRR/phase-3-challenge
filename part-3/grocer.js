@@ -66,4 +66,5 @@ clear.addEventListener('click', () => {
     cartContents = [];
     cartNum = 0;
     itemCount();
+    modal.style.display = "none";
 })
