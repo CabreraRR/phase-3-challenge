@@ -6,7 +6,6 @@ const add = document.querySelectorAll('.add');
 const cart = document.getElementById('cart-item-count');
 const contents = document.getElementById('list');
 const total = document.getElementById('total');
-console.log(add)
 
 let cartContents = [];
 let cartNum = 0;
@@ -27,21 +26,22 @@ function itemCount() {
 
 //ADD TO CART
 //this will add the specific item chosen to the cart
-for (var i = 0; add.length; i++) {
-    add[i].addEventListener('click', function() {
+for (var i = 0; i < add.length; i++) {
+	let a = add[i]
+    add[i].addEventListener('click', () => {
         let item = {};
-        item.name = this.previousElementSibling.previousElementSibling.innerHTML;
-        item.price = this.previousElementSibling.innerHTML;
+        item.name = a.previousElementSibling.previousElementSibling.innerHTML;
+        item.price = a.previousElementSibling.innerHTML;
         cartContents.push(item);
         cartNum++;
         itemCount();
-    })
+    });
 }
 
 
 //MODAL
 //Modal will "open" and will print the contents of the cart and the total 
-btn.addEventListener('click', function() {
+btn.addEventListener('click', () => {
     modal.style.display = "block";
     list.innerHTML = '';
     cartContents.forEach(item => {
@@ -56,13 +56,13 @@ btn.addEventListener('click', function() {
 
 //MODAL: CLOSE
 //will "close" the Modal
-close.addEventListener('click', function() {
+close.addEventListener('click', () => {
     modal.style.display = "none";
 })
 
 //MODAL:CLEAR BUTTON
 // this will empty the cart and the total amount of items inside the cart
-clear.addEventListener('click', function() {
+clear.addEventListener('click', () => {
     cartContents = [];
     cartNum = 0;
     itemCount();
