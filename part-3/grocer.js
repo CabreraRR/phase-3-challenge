@@ -1,18 +1,21 @@
 const modal = document.getElementById('myCart');
 const btn = document.getElementById('cart-button');
-const span = document.getElementsByClassName('close')[0];
+const close = document.getElementsByClassName('close')[0];
 const clear = document.getElementById('clear');
-const add = document.getElementById('add');
+const add = document.querySelectorAll('.add');
 const cart = document.getElementById('cart-item-count');
 const contents = document.getElementById('list');
+const total = document.getElementById('total');
+console.log(add)
 
 let cartContents = [];
 let cartNum = 0;
+let cartTotal = 0;
 
-test = "test"
 window.onload = itemCount();
 
-
+//CART AMOUNT
+//This will set the amount in the cart to 0 at start and will prompt the console based on the contents
 function itemCount() {
     cart.innerHTML = "(" + cartNum + ")";
     if (cartNum === 0) {
@@ -22,29 +25,45 @@ function itemCount() {
     }
 };
 
-
-
-add.onclick = function() {
-    let item = {};
-    cartContents.push(item);
-    cartNum++;
-    itemCount();
+//ADD TO CART
+//this will add the specific item chosen to the cart
+for (var i = 0; add.length; i++) {
+    add[i].addEventListener('click', function() {
+        let item = {};
+        item.name = this.previousElementSibling.previousElementSibling.innerHTML;
+        item.price = this.previousElementSibling.innerHTML;
+        cartContents.push(item);
+        cartNum++;
+        itemCount();
+    })
 }
 
-function printCart() {
-	createli();
-};
 
-btn.onclick = function() {
+//MODAL
+//Modal will "open" and will print the contents of the cart and the total 
+btn.addEventListener('click', function() {
     modal.style.display = "block";
+    list.innerHTML = '';
+    cartContents.forEach(item => {
+        var el = document.createElement('li');
+        el.innerHTML = '<span>' + item.name + '</span><span>' + item.price + '</span>';
+        el.className = 'flex flex-row-between';
+        list.appendChild(el);
+        cartTotal += parseFloat(item.price.slice(1));
+        total.innerHTML = 'TOTAL: $' + cartTotal.toFixed(2);
+    });
+})
 
-}
-span.onclick = function() {
+//MODAL: CLOSE
+//will "close" the Modal
+close.addEventListener('click', function() {
     modal.style.display = "none";
-}
+})
 
-clear.onclick = function() {
+//MODAL:CLEAR BUTTON
+// this will empty the cart and the total amount of items inside the cart
+clear.addEventListener('click', function() {
     cartContents = [];
     cartNum = 0;
     itemCount();
-}
+})
