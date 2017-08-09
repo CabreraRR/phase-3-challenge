@@ -6,8 +6,6 @@ const {
 	shopperOrders
 } = require('./database/database');
 
-
-
 if (command === 'product-list'){
 	productList(arg);
 }

@@ -28,7 +28,7 @@ function itemCount() {
 //this will add the specific item chosen to the cart
 for (var i = 0; i < add.length; i++) {
 	let a = add[i]
-    add[i].addEventListener('click', () => {
+    a.addEventListener('click', () => {
         let item = {};
         item.name = a.previousElementSibling.previousElementSibling.innerHTML;
         item.price = a.previousElementSibling.innerHTML;
