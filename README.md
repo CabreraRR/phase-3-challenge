@@ -79,9 +79,9 @@ response: {"error": "Input data should be of type Array."}
 
 - [x] __10:__ All files are stored under the `part-1/` folder
 - [x] __10:__ All dependencies are specified in a `package.json` file
-- [ ] __10:__ Web server can be started with `npm start` command
+- [x] __10:__ Web server can be started with `npm start` command
 - [x] __20:__ GET requests to the `/api/days/:day` route responds with  content type `application/text`, as described in the example above
-- [ ] __80:__ POST requests to the `/api/array/concat`, concatenates the two arrays provided in the request body and responds with the result. An invalid array should return a 400 response.
+- [x] __80:__ POST requests to the `/api/array/concat`, concatenates the two arrays provided in the request body and responds with the result. An invalid array should return a 400 response.
 
 ## Part 2: Command Line Grocery Store
 
