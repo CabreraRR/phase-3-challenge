@@ -2,7 +2,8 @@ const command = process.argv[2];
 const arg = process.argv[3];
 const {
 	productList,
-	realShoppers
+	realShoppers,
+	shopperOrders
 } = require('./database/database');
 
 

@@ -25,9 +25,12 @@ client.connect();
 
 
 const productList = function(section) {
+	if (section === undefined){
+		console.log('invalid input')
+		client.end();
+	}
     try {
-        client.query(`SELECT products.name, products.section 
-        	FROM products 
+        client.query(`SELECT products.name, products.section FROM products 
         	WHERE products.section = '${section}'`).then(result => {
             console.log('+--------------------+--------------------+');
             console.log('| PRODUCT NAME       | SECTION            |');
@@ -47,10 +50,8 @@ const productList = function(section) {
 
 const realShoppers = function() {
     try {
-        client.query(`SELECT name, COUNT(cust_id) AS a
-        	FROM shoppers
-        	JOIN orders
-        	ON shoppers.id = orders.cust_id
+        client.query(`SELECT name, COUNT(cust_id) AS a FROM shoppers
+        	JOIN orders ON shoppers.id = orders.cust_id
         	GROUP BY name
         	ORDER BY a ASC;`).then(result => {
             console.log('+--------------------+--------------------+');
@@ -68,24 +69,28 @@ const realShoppers = function() {
     }
 }
 
-// const shopperOrders = function(id) {
-//     try {
-//         client.query().then(result => {
-//             console.log('+--------------------+--------------------+');
-//             console.log('| ORDER ID.          | TOTAL              |');
-//             console.log('+--------------------+--------------------+');
-//             result.rows.forEach((order) => {
-//                 console.log(`| ${order.id}`.padEnd(21) + `| ${order./*something*/}`.padEnd(21) + `|`);
-//             });
-//             console.log('+--------------------+--------------------+');
-//         });
-//     } catch (e) {
-//         console.error(e);
-//     }
-// }
+const shopperOrders = function(id) {
+    try {
+        client.query(`SELECT o.id, p.price FROM orders AS o
+			JOIN products AS p on o.cart = p.id
+			WHERE o.cust_id = ${id};`).then(result => {
+            console.log('+--------------------+--------------------+');
+            console.log('| ORDER ID.          | TOTAL              |');
+            console.log('+--------------------+--------------------+');
+            result.rows.forEach((order) => {
+                console.log(`| ${order.id}`.padEnd(21) + `|   $ ${order.price}`.padEnd(21) + `|`);
+            });
+            console.log('+--------------------+--------------------+');
+            client.end();
+        });
+    } catch (e) {
+        console.error(e);
+        client.end();
+    }
+}
 
 module.exports = {
     productList,
-    realShoppers
-    // shoppingOrders
+    realShoppers,
+    shopperOrders
 }
