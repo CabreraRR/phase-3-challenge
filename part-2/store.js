@@ -1,8 +1,10 @@
 const command = process.argv[2];
 const arg = process.argv[3];
-const 
-
-console.log('grocer');
+const {
+	productList,
+	realShoppers,
+	shopperOrders
+} = require('./database/database');
 
 if (command === 'product-list'){
 	productList(arg);
