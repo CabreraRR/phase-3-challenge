@@ -7,7 +7,6 @@ const {
 } = require('./database/database');
 
 
-console.log('grocer');
 
 if (command === 'product-list'){
 	productList(arg);
