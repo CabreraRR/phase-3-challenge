@@ -147,11 +147,11 @@ $ ./store real-shoppers
 - [x] __10:__ Database schema (all `CREATE TABLE` statements) is defined in a file `schema.sql`
 - [x] __10:__ SQL script to insert [grocery seed data][grocery-data] and load from CSV is created in a file `load-data.sql`
 - [x] __10:__ SQL statements to insert data into the `orders` and `shoppers` table is added to the file `load-data.sql`. (Add at least 5 rows in each table)
-- [ ] __10:__ All database query functions are written in a file `database.js`, and tests for queries are written in a file `database_test.js`
+- [x] __10:__ All database query functions are written in a file `database.js`, and tests for queries are written in a file `database_test.js`
 - [ ] __10:__ Tests can be run with the command `$ npm test`
 
 User Stories: Ensure that your schema design can satisfy the following scenarios
-- [ ] __10__: As a shopper I can fetch all my orders
+- [x] __10__: As a shopper I can fetch all my orders
 - [x] __10__: As a shopper I can have multiple items in an order. (Assume the quantity of each item is always 1)
 
 Command line interface requirements
@@ -191,7 +191,7 @@ Clicking on the "Cart" button opens the cart modal.
 - [x] __20:__ Clicking on the "Cart" button will show the cart modal with a list of all items added
 - [x] __20:__ Clicking on the "Clear" button in the cart modal removes all items from the cart
 - [x] __20:__ Clicking on the "X" button in the cart modal closes the modal
-- [ ] __20:__ The "Total" in the cart modal shows the calculated sum of all item prices
+- [x] __20:__ The "Total" in the cart modal shows the calculated sum of all item prices
 
 [grocery-data]: https://gist.github.com/lg-bot/1be9e9b91fc0f972b74b72df34c99d3d#file-grocery-csv
 [grocer-html]: https://gist.github.com/lg-bot/1be9e9b91fc0f972b74b72df34c99d3d#file-grocer-html
