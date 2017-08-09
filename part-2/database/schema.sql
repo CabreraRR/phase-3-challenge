@@ -13,14 +13,13 @@ CREATE TABLE shoppers(
 
 DROP TABLE IF EXISTS products;
 
-CREATE TABLE shoppers(
-	id SERIAL PRIMARY KEY,
-	product VARCHAR(20),
+CREATE TABLE products(
+	name VARCHAR(20),
 	section VARCHAR(20),
 	price NUMERIC(2,4)
 	);
 
-DROP TABLE IF EXISTS shoppers;
+DROP TABLE IF EXISTS orders;
 
 CREATE TABLE orders(
 	id SERIAL PRIMARY KEY,
