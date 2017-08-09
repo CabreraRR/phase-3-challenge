@@ -2,8 +2,9 @@
   "name": "part-2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "store.js",
   "scripts": {
+    "store": "node ./store.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
