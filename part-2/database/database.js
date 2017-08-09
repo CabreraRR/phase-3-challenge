@@ -27,40 +27,65 @@ client.connect();
 const productList = function(section) {
     try {
         client.query(`SELECT products.name, products.section 
-        	FROM products WHERE products.section = '${section}'`).then(result => {
-            console.log('+--------------------+---------------+');
-            console.log('| PRODUCT NAME       | SECTION       |');
-            console.log('+--------------------+---------------+');
+        	FROM products 
+        	WHERE products.section = '${section}'`).then(result => {
+            console.log('+--------------------+--------------------+');
+            console.log('| PRODUCT NAME       | SECTION            |');
+            console.log('+--------------------+--------------------+');
             result.rows.forEach((product) => {
-                console.log(`| ${product.name}`.padEnd(21) + `| ${product.section}`.padEnd(16) + `|`);
+                console.log(`| ${product.name}`.padEnd(21) + `| ${product.section}`.padEnd(21) + `|`);
             })
-            console.log('+--------------------+---------------+');
+            console.log('+--------------------+--------------------+');
             client.end();
         });
     } catch (e) {
         console.error(e);
+        client.end();
     }
 }
 
 
-const realShoppers = function(){
-	try{
-		client.query();
-	} catch(e){
-		console.error(e);
-	}
+const realShoppers = function() {
+    try {
+        client.query(`SELECT name, COUNT(cust_id) AS a
+        	FROM shoppers
+        	JOIN orders
+        	ON shoppers.id = orders.cust_id
+        	GROUP BY name
+        	ORDER BY a ASC;`).then(result => {
+            console.log('+--------------------+--------------------+');
+            console.log('| SHOPPER NAME       | # OF ORDERS        |');
+            console.log('+--------------------+--------------------+');
+            result.rows.forEach((shopper) => {
+                console.log(`| ${shopper.name}`.padEnd(21) + `| ${shopper.a}`.padEnd(21) + `|`);
+            });
+            console.log('+--------------------+--------------------+');
+            client.end();
+        });
+    } catch (e) {
+        console.error(e);
+        client.end();
+    }
 }
 
-// const shopperOrders = function(id){
-// 	try{
-// 		client.query();
-// 	} catch(e){
-// 		console.error(e);
-// 	}
+// const shopperOrders = function(id) {
+//     try {
+//         client.query().then(result => {
+//             console.log('+--------------------+--------------------+');
+//             console.log('| ORDER ID.          | TOTAL              |');
+//             console.log('+--------------------+--------------------+');
+//             result.rows.forEach((order) => {
+//                 console.log(`| ${order.id}`.padEnd(21) + `| ${order./*something*/}`.padEnd(21) + `|`);
+//             });
+//             console.log('+--------------------+--------------------+');
+//         });
+//     } catch (e) {
+//         console.error(e);
+//     }
 // }
 
 module.exports = {
-    productList
-    // realShoppers
+    productList,
+    realShoppers
     // shoppingOrders
 }
