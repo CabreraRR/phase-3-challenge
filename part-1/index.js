@@ -21,12 +21,12 @@ app.get('/api/days/:day', (req, res) => {
 });
 
 app.post('/api/array/concat', (req, res) => {
-let ret = []
+    ret=[];
     const vals = Object.keys(req.body).map(key => req.body[key]);
     let ar = vals[0]
     ar.forEach(function(item) {
-    	
-        ret.push(item.slice(1, -1));
+        item.reduce(function(a, b) {
+a.concat(b);
     })
     let stuff = ret.join(', ').split(", ")
     res.status(200).send(stuff);
